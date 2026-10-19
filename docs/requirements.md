@@ -1,3 +1,5 @@
+# Requirements Specification & Verification Matrix
+
 | ID | Requirement / Rule | Acceptance Criterion | Verification Result |
 | :--- | :--- | :--- | :--- |
 | **R1** | The system shall display a prompt and turn off the LED when starting a round. | Watched 3 round starts: LED turns off and message prints. | Pass |
@@ -7,3 +9,7 @@
 | **R5** | The system measurement error shall be within ±100 ms. | Argued from the error budget (debounce and polling intervals). | Argued, not measured |
 | **R6** | The system shall run continuously in a loop until interrupted by the user. | Played 3 rounds, then exited cleanly with Ctrl+C. | Pass |
 | **R7** | When a round ends with a valid press, if the elapsed time is less than any previous time recorded in the session, the system shall print `NEW HIGH SCORE!` alongside the time. | Completed two rounds where the second press was faster: verified message appeared only on the second attempt. | Pass |
+| **R8** | The system shall require the button to be held down continuously for a full 2.0 seconds before lighting the LED. | Released at 1.0s (LED stayed off). Held for full 2.0s (LED lit up successfully). | Pass |
+| **R9** | The system shall cancel the hold operation if the button is released prior to reaching the 2.0-second mark. | Released at 1.2s: program printed "Released too early! Cancelled." | Pass |
+| **R10** | The system shall execute exactly five valid reaction timer rounds in a single session before stopping automatically. | Completed 5 valid rounds: program automatically exited after the 5th round. | Pass |
+| **R11** | The system shall calculate and display the fastest time and the average time across all five valid rounds upon completion. | Verified final terminal output printed accurate Best and Average time calculations. | Pass |
